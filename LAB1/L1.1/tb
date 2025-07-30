@@ -1,0 +1,70 @@
+#! /opt/homebrew/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x143608b70 .scope module, "tb" "tb" 2 4;
+ .timescale -9 -9;
+v0x14361e4f0_0 .var "a", 0 0;
+v0x14361e5a0_0 .var "b", 0 0;
+v0x14361e630_0 .net "o1", 0 0, L_0x14361e930;  1 drivers
+v0x14361e6e0_0 .net "o2", 0 0, L_0x14361ead0;  1 drivers
+v0x14361e790_0 .net "o3", 0 0, L_0x14361ece0;  1 drivers
+S_0x143608ce0 .scope module, "dut" "comp" 2 8, 3 1 0, S_0x143608b70;
+ .timescale -9 -9;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "O1";
+    .port_info 3 /OUTPUT 1 "O2";
+    .port_info 4 /OUTPUT 1 "O3";
+L_0x14361e860 .functor NOT 1, v0x14361e5a0_0, C4<0>, C4<0>, C4<0>;
+L_0x14361e930 .functor AND 1, v0x14361e4f0_0, L_0x14361e860, C4<1>, C4<1>;
+L_0x14361ea60 .functor XOR 1, v0x14361e4f0_0, v0x14361e5a0_0, C4<0>, C4<0>;
+L_0x14361ead0 .functor NOT 1, L_0x14361ea60, C4<0>, C4<0>, C4<0>;
+L_0x14361ebc0 .functor NOT 1, v0x14361e4f0_0, C4<0>, C4<0>, C4<0>;
+L_0x14361ece0 .functor AND 1, L_0x14361ebc0, v0x14361e5a0_0, C4<1>, C4<1>;
+v0x14360e5b0_0 .net "A", 0 0, v0x14361e4f0_0;  1 drivers
+v0x14361dfb0_0 .net "B", 0 0, v0x14361e5a0_0;  1 drivers
+v0x14361e050_0 .net "O1", 0 0, L_0x14361e930;  alias, 1 drivers
+v0x14361e0e0_0 .net "O2", 0 0, L_0x14361ead0;  alias, 1 drivers
+v0x14361e180_0 .net "O3", 0 0, L_0x14361ece0;  alias, 1 drivers
+v0x14361e260_0 .net *"_ivl_0", 0 0, L_0x14361e860;  1 drivers
+v0x14361e310_0 .net *"_ivl_4", 0 0, L_0x14361ea60;  1 drivers
+v0x14361e3c0_0 .net *"_ivl_8", 0 0, L_0x14361ebc0;  1 drivers
+    .scope S_0x143608b70;
+T_0 ;
+    %vpi_call 2 17 "$dumpfile", "tb.vcd" {0 0 0};
+    %vpi_call 2 18 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x143608b70 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x14361e4f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x14361e5a0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x14361e4f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x14361e5a0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x14361e4f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x14361e5a0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x14361e4f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x14361e5a0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 32 "$display", "Test Complete..." {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb.v";
+    "./comp.v";
