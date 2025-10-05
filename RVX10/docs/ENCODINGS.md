@@ -1,4 +1,4 @@
-# RVX10 Encodings — exact bitfields + worked examples
+# RVX10  Encodings — exact bitfields + worked examples
 
 **Opcode:** CUSTOM‑0 = `0001011` (0x0B) — R‑type format
 
