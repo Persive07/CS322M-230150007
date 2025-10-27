@@ -27,5 +27,3 @@
 ## Program end (bench constraints)
 - First store: `sw x0, 96(x0)`.
 - Success store: `addi x2, x0, 25` then `sw x2, 100(x0)`.
-
-## 230150033
